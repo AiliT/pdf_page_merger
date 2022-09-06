@@ -1,5 +1,4 @@
-using iText.Kernel.Pdf;
-using iText.Kernel.Pdf.Canvas.Parser;
+using WinFormsProject;
 
 namespace WinFormsApp1
 {
@@ -30,55 +29,7 @@ namespace WinFormsApp1
                 return;
             }
 
-            resultLabel.Text = CreatePdf(resultFileName, originPath, textToFind);
-        }
-
-
-        private string CreatePdf(string resultFileName, string originPath, string textToFind)
-        {
-            PdfDocument? resultDocument = null;
-            try
-            {
-                resultDocument = new PdfDocument(new PdfWriter(resultFileName));
-
-                foreach (string fileName in Directory.EnumerateFiles(originPath, "*.pdf"))
-                {
-                    PdfDocument? document = null;
-                    try
-                    {
-                        document = new PdfDocument(new PdfReader(fileName));
-
-                        for (int i = 1; i <= document.GetNumberOfPages(); i++)
-                        {
-                            PdfPage page = document.GetPage(i);
-                            string text = PdfTextExtractor.GetTextFromPage(page);
-
-                            if (text.Contains(textToFind, StringComparison.OrdinalIgnoreCase))
-                            {
-                                document.CopyPagesTo(i, i, resultDocument);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        return ex.Message;
-                    }
-                    finally
-                    {
-                        document?.Close();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
-            finally
-            {
-                resultDocument?.Close();
-            }
-
-            return "Valmis.";
+            resultLabel.Text = LogicHelper.CreatePdfFromMatchingPages(resultFileName, originPath, textToFind);
         }
     }
 }

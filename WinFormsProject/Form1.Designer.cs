@@ -52,9 +52,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(18, 93);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(193, 20);
+            this.label2.Size = new System.Drawing.Size(274, 20);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Valmistetun tiedoston nimi: ";
+            this.label2.Text = "Valmistetun tiedoston nimi (ilman .pdf): ";
             // 
             // label3
             // 
@@ -109,7 +109,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 316);
+            this.ClientSize = new System.Drawing.Size(781, 269);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.resultLabel);
             this.Controls.Add(this.textToSearchTextBox);
@@ -118,6 +118,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "PDF sivujen yhdistäjä";
             this.ResumeLayout(false);
