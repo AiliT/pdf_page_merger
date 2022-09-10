@@ -7,7 +7,7 @@ namespace WinFormsProject
     {
         public static string CreatePdfFromMatchingPages(string resultFileName, string originPath, string textToFind)
         {
-            PdfDocument resultDocument = null;
+            PdfDocument? resultDocument = null;
             try
             {
                 resultDocument = new PdfDocument(new PdfWriter($"{resultFileName}.pdf"));
@@ -15,8 +15,10 @@ namespace WinFormsProject
                 {
                     using (var document = new PdfSearchableDocument(fileName))
                     {
-                        var pageNumber = document.GetPageNumberContainingString(textToFind);
-                        document.CopyPageTo(pageNumber, resultDocument);
+                        if (document.TryGetPageNumberContainingString(textToFind, out int pageNumber))
+                        {
+                            document.CopyPageTo(pageNumber, resultDocument);
+                        }
                     }
                 }
 
@@ -24,8 +26,11 @@ namespace WinFormsProject
             }
             catch (Exception ex)
             {
-                resultDocument?.Close();
                 return ex.Message;
+            }
+            finally
+            {
+                resultDocument?.Close();
             }
         }
     }

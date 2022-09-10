@@ -25,6 +25,20 @@ namespace DAL
 
         public int GetPageNumberContainingString(string searchString)
         {
+            if (TryGetPageNumberContainingString(searchString, out int pageNumber))
+            {
+                return pageNumber;
+            }
+            else
+            {
+                throw new InvalidOperationException($"Given string \"{searchString}\" was not found in document.");
+            }
+        }
+
+        public bool TryGetPageNumberContainingString(string searchString, out int number)
+        {
+            number = -1;
+
             for (int i = 1; i <= Document.GetNumberOfPages(); i++)
             {
                 PdfPage page = Document.GetPage(i);
@@ -32,11 +46,13 @@ namespace DAL
 
                 if (text.Contains(searchString, StringComparison.OrdinalIgnoreCase))
                 {
-                    return i;
+                    number = i;
+                    return true;
                 }
             }
 
-            throw new InvalidOperationException($"Given string \"{searchString}\" was not found in document.");
+            return false;
         }
+
     }
 }
