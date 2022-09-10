@@ -12,6 +12,7 @@ namespace WinFormsApp1
         private void startButton_Click(object sender, EventArgs e)
         {
             resultLabel.Text = "Odota.";
+            Refresh();
 
             string originPath = originPathTextBox.Text;
             string resultFileName = resultPathTextBox.Text;

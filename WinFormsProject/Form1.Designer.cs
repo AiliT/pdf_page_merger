@@ -89,17 +89,19 @@
             // resultLabel
             // 
             this.resultLabel.AutoSize = true;
-            this.resultLabel.Location = new System.Drawing.Point(360, 287);
+            this.resultLabel.Location = new System.Drawing.Point(350, 193);
+            this.resultLabel.MinimumSize = new System.Drawing.Size(100, 30);
             this.resultLabel.Name = "resultLabel";
-            this.resultLabel.Size = new System.Drawing.Size(0, 20);
+            this.resultLabel.Size = new System.Drawing.Size(100, 30);
             this.resultLabel.TabIndex = 6;
-            this.resultLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.resultLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(334, 215);
+            this.startButton.Location = new System.Drawing.Point(350, 240);
+            this.startButton.MinimumSize = new System.Drawing.Size(100, 0);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(94, 29);
+            this.startButton.Size = new System.Drawing.Size(100, 29);
             this.startButton.TabIndex = 7;
             this.startButton.Text = "Aloita";
             this.startButton.UseVisualStyleBackColor = true;
@@ -109,7 +111,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(781, 269);
+            this.ClientSize = new System.Drawing.Size(782, 273);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.resultLabel);
             this.Controls.Add(this.textToSearchTextBox);
